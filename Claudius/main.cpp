@@ -84,10 +84,7 @@ bool ResourceManager::LoadImageFromFile(Image& image, const std::string &filePat
 /* TODO: Change name to add something to symbolize the functions adding to the sprite and rect
 *  Probably can make all three noexcept maybe const
 */
-void RenderManager::Render(const Sprite& sprite, const Transform& trans)
-{
-	spriteEntries.push_back({ sprite, trans });
-}
+
 
 void RenderManager::Render(const Rectangle& rect, const Color& color, const Transform& trans)
 {
@@ -96,7 +93,7 @@ void RenderManager::Render(const Rectangle& rect, const Color& color, const Tran
 
 void RenderManager::Clear()
 {
-	spriteEntries.clear();
+	
 	rectEntries.clear();
 }
 
