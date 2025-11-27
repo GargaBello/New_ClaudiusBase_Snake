@@ -2,7 +2,6 @@
 #include "RenderManager.h"
 #include "Game.h"
 #include "Transform.h"
-#include "Image.h"
 
 #undef main
 

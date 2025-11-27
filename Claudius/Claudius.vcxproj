@@ -148,7 +148,6 @@
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Image.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rectangle.cpp" />
@@ -159,8 +158,6 @@
     <ClInclude Include="Apple.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Color.h" />
-    <ClInclude Include="Image.h" />
-    <ClInclude Include="KeyCode.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RenderManager.h" />
