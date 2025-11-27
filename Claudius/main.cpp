@@ -81,14 +81,6 @@ bool ResourceManager::LoadImageFromFile(Image& image, const std::string &filePat
 // RenderManager
 
 
-/* TODO: Seemingly useless code remove
-*/
-struct RenderImpl
-{
-	SDL_Renderer* renderer;
-
-};
-
 /* TODO: Change name to add something to symbolize the functions adding to the sprite and rect
 *  Probably can make all three noexcept maybe const
 */
@@ -210,27 +202,7 @@ int main()
 
 		SDL_SetRenderDrawColor(renderer,0,0,0,0);
 		SDL_RenderClear(renderer);
-		for (auto &&entry : renderManager.spriteEntries)
-		{
-			if (entry.sprite.image != nullptr)
-			{
-				SDL_Rect src{ entry.sprite.source.x, entry.sprite.source.y, entry.sprite.source.w, entry.sprite.source.h };
-				SDL_Rect dst{ static_cast<int>(entry.trans.position.x),
-							  static_cast<int>(entry.trans.position.y),
-							  static_cast<int>(entry.sprite.image->width),
-							  static_cast<int>(entry.sprite.image->height) };
-				SDL_RenderCopy(renderer, resourceImpl.GetTexture(entry.sprite.image->id), &src, &dst);
-			}
-			else
-			{
-				SDL_SetRenderDrawColor(renderer, entry.sprite.color.r, entry.sprite.color.g, entry.sprite.color.b, entry.sprite.color.a);
-				SDL_Rect rect{ static_cast<int>(entry.trans.position.x),
-							   static_cast<int>(entry.trans.position.y),
-							   entry.sprite.source.w,
-							   entry.sprite.source.h };
-				SDL_RenderDrawRect(renderer, &rect);
-			}
-		}
+		
 		for (auto&& entry : renderManager.rectEntries)
 		{
 			SDL_SetRenderDrawColor(renderer, entry.color.r, entry.color.g, entry.color.b, entry.color.a);
