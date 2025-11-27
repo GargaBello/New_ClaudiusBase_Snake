@@ -2,6 +2,7 @@
 #include <cmath>
 #include "RenderManager.h"
 #include <iostream>
+#include "SDL.h"
 
 void Player::Initialize()
 {
@@ -81,30 +82,30 @@ void Player::Update(double dt)
 	}
 }
 
-void Player::OnKeyDown(KeyCode key)
+void Player::OnKeyDown()
 {
-	if (key == KeyCode::LEFT_ARROW)
+	if (SDLK_LEFT)
 	{
 		moving_left = true;
 		moving_right = false;
 		moving_up = false;
 		moving_down = false;
 	}
-	else if (key == KeyCode::RIGHT_ARROW)
+	else if (SDLK_RIGHT)
 	{
 		moving_left = false;
 		moving_right = true;
 		moving_up = false;
 		moving_down = false;
 	}
-	else if (key == KeyCode::UP_ARROW)
+	else if (SDLK_UP)
 	{
 		moving_left = false;
 		moving_right = false;
 		moving_up = true;
 		moving_down = false;
 	}
-	else if (key == KeyCode::DOWN_ARROW)
+	else if (SDLK_DOWN)
 	{
 		moving_left = false;
 		moving_right = false;

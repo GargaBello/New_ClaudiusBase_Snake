@@ -2,7 +2,6 @@
 
 #include <string>
 #include <vector>
-#include "KeyCode.h"
 #include "Apple.h"
 #include "Player.h"
 
@@ -33,6 +32,6 @@ public:
 	bool Enter(int& width, int& height, std::string& title);
 	void Update(double dt);
 	void Render(RenderManager& rendererManager);
-	void OnKeyDown(KeyCode key);
-	void OnKeyUp(KeyCode key);
+	void OnKeyDown();
+	
 };

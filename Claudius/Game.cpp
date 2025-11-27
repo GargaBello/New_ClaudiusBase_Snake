@@ -70,11 +70,8 @@ void Game::Render(RenderManager& renderManager)
 	apple.Render(renderManager);
 }
 
-void Game::OnKeyDown(KeyCode key)
+void Game::OnKeyDown()
 {
-	playerOne.OnKeyDown(key);
+	playerOne.OnKeyDown();
 }
 
-void Game::OnKeyUp(KeyCode key)
-{
-}
