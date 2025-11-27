@@ -10,8 +10,17 @@
 
 // ResourceManager 
 
+/* TODO: Make resourcemanager implementation separate file
+*/
+
 struct ResourceImpl
 {
+	/* TODO: Get texture and resource impl can be made noexcept
+	* Refactor to make use of less pointers
+	* Make the pointers unique pointers
+	* Uninitialized
+	* Rewrite the get texture with a algorithm
+	*/
 	ResourceImpl(SDL_Renderer* renderer) : renderer(renderer) {};
 	std::vector<std::pair<std::string, SDL_Texture*>> textures;
 	SDL_Renderer* renderer;
@@ -26,6 +35,11 @@ struct ResourceImpl
 
 bool ResourceManager::LoadImageFromFile(Image& image, const std::string &filePath)
 {
+	/* TODO: Use std find if and ranges to find the index in the textures vector
+	*  Make use of the call thing to name the pair thing filepath
+	*  Instead of if use asserts to check if the surface and texture are nullptr
+	*/
+
 	auto it = impl.textures.begin();
 	unsigned int index = 0;
 	while (it != impl.textures.end())
@@ -66,12 +80,18 @@ bool ResourceManager::LoadImageFromFile(Image& image, const std::string &filePat
 
 // RenderManager
 
+
+/* TODO: Seemingly useless code remove
+*/
 struct RenderImpl
 {
 	SDL_Renderer* renderer;
 
 };
 
+/* TODO: Change name to add something to symbolize the functions adding to the sprite and rect
+*  Probably can make all three noexcept maybe const
+*/
 void RenderManager::Render(const Sprite& sprite, const Transform& trans)
 {
 	spriteEntries.push_back({ sprite, trans });
@@ -88,6 +108,9 @@ void RenderManager::Clear()
 	rectEntries.clear();
 }
 
+
+/* TODO: can be made static and noexcept
+*/
 KeyCode TranslateKeyCode(SDL_Keycode code)
 {
 	switch (code)
@@ -132,6 +155,11 @@ KeyCode TranslateKeyCode(SDL_Keycode code)
 
 int main()
 {
+	/* TODO: Look into removing all of the render stuff
+	*  width and height can be made const, dt can be made const
+	*  Make the game throw an exception if the things are nullptr
+	*/
+
 	SDL_Init(SDL_INIT_EVERYTHING);
 	SDL_Window* window = SDL_CreateWindow("Base", 0, 0, 0, 0, SDL_WindowFlags::SDL_WINDOW_RESIZABLE);
 	if (window == nullptr)
@@ -161,6 +189,9 @@ int main()
 	SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 	
 	float dt = 1.0f / 60.0f;
+
+	/* TODO: Potentially remove the sprite drawing logic and just draw rectangles
+	*/
 	while (running)
 	{
 		SDL_Event e;
