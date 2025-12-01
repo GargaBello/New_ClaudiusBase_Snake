@@ -31,7 +31,9 @@ public:
 	~Game();
 	bool Enter(int& width, int& height, std::string& title);
 	void Update(double dt);
+	void Init();
 	void Render(RenderManager& rendererManager);
+	void Shut();
 	void OnKeyDown();
 	
 };

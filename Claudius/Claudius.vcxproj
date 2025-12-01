@@ -78,6 +78,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\</OutDir>
     <CodeAnalysisRuleSet>CppCoreCheckRules.ruleset</CodeAnalysisRuleSet>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\</OutDir>
@@ -103,6 +104,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)External\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,9 +162,39 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="x64\Debug\Apple.obj" />
+    <Object Include="x64\Debug\Color.obj" />
+    <Object Include="x64\Debug\Game.obj" />
+    <Object Include="x64\Debug\main.obj" />
+    <Object Include="x64\Debug\Player.obj" />
+    <Object Include="x64\Debug\Rectangle.obj" />
+    <Object Include="x64\Debug\Transform.obj" />
+    <Object Include="x64\Debug\Vector2.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="x64\Debug\Claudius.exe.recipe" />
+    <None Include="x64\Debug\Claudius.ilk" />
+    <None Include="x64\Debug\Claudius.tlog\CL.command.1.tlog" />
+    <None Include="x64\Debug\Claudius.tlog\Cl.items.tlog" />
+    <None Include="x64\Debug\Claudius.tlog\CL.read.1.tlog" />
+    <None Include="x64\Debug\Claudius.tlog\CL.write.1.tlog" />
+    <None Include="x64\Debug\Claudius.tlog\Claudius.lastbuildstate" />
+    <None Include="x64\Debug\Claudius.tlog\link.command.1.tlog" />
+    <None Include="x64\Debug\Claudius.tlog\link.read.1.tlog" />
+    <None Include="x64\Debug\Claudius.tlog\link.secondary.1.tlog" />
+    <None Include="x64\Debug\Claudius.tlog\link.write.1.tlog" />
+    <None Include="x64\Debug\vc143.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="x64\Debug\Claudius.log" />
+    <Text Include="x64\Debug\vcpkg.applocal.log" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
