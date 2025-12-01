@@ -62,11 +62,12 @@ int main()
 	*  width and height can be made const, dt can be made const
 	*  Make the game throw an exception if the things are nullptr
 	*/
-	Game game;
 
 	SDL_Resource resource;
-	Window window(game.get_width(), game.get_height(), game.get_title(), 0);
+	Window window(width, height, title, 0);
 	Renderer renderer(window, SDL_RendererFlags::SDL_RENDERER_ACCELERATED);
+
+	Game game;
 
 	bool running = true;
 
