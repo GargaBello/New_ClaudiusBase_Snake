@@ -2,20 +2,23 @@
 
 #include <string>
 #include <vector>
-#include "Apple.h"
 #include "Player.h"
+#include "Renderer.h"
+#include "SDL_Resource.h"
 
-/*
-*/
-
-struct RenderManager;
 
 
 class Game
 {
-	Player playerOne;
-	Apple apple;
+	
+private:
+	int width = 1250;
+	int height = 700;
 
+	std::string_view title = "Snake";
+
+	Player player;
+	Apple apple;
 
 
 public:
@@ -24,16 +27,16 @@ public:
 	// float timer; <- can be used in delta time
 	// float updateInterval; <- check Game.h
 
-	int width;
-	int height;
-
 	Game();
-	~Game();
-	bool Enter(int& width, int& height, std::string& title);
-	void Update(double dt);
+
+	int get_width();
+	int get_height();
+	std::string_view get_title();
+
+	void Update(double dt, Renderer renderer);
 	void Init();
-	void Render(RenderManager& rendererManager);
+	void Render(Renderer renderer);
 	void Shut();
-	void OnKeyDown();
+	void OnKeyDown(SDL_Keycode key);
 	
 };

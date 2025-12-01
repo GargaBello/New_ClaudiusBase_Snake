@@ -4,74 +4,56 @@
 #include "RenderManager.h"
 #include <iostream>
 
-Game::Game() :  width(1250), height(700)
+
+Game::Game()
 {
-	//Player test, moving two players to collide with each other.
-	playerOne.Initialize();
-	apple.Initialize(10, 10);
+
+	
 }
 
-Game::~Game()
+int Game::get_width()
 {
+	return width;
 }
 
-bool Game::Enter(int& width, int& height, std::string& title)
+int Game::get_height()
 {
-	width = this->width;	//1250
-	height = this->height;	// 700
-	title = "Snake";
-	return true;
+	return height;
 }
 
-void Game::Update(double dt)
+std::string_view Game::get_title()
 {
-	// dt means delta time.
-	// timer += dt; <- check Game.h
-	// if (timer > updateInterval)
-	//{
-	// update snake movement
-	// timer = 0.0f; or timer -= updateInterval;
-	//}
+	return title;
+}
 
-	playerOne.Update(dt);
-
-	// Player colliding on theirself.
-	for (int i = 0; i < playerOne.player_score; i++)
-	{
-		if (playerOne.trans.GetPosition() == playerOne.parts[i].trans.GetPosition())
-		{
-			playerOne.ResetPlayer();
-		}
-	}
-
-	// Player going out of X bounds.
-	if (playerOne.trans.GetX() > width || playerOne.trans.GetX() < 0)
-	{
-		playerOne.ResetPlayer();
-	}
-
-	// Player going out of Y bounds.
-	if (playerOne.trans.GetY() > height || playerOne.trans.GetY() < 0)
-	{
-		playerOne.ResetPlayer();
-	}
+void Game::Update(double dt, Renderer renderer)
+{
+	player.Update(dt);
 
 	// Player collide on apple.
-	if (playerOne.trans.GetPosition() == apple.trans.GetPosition())
+	if (snakePosX == applePosX && snakePosY == applePosY)
 	{
-		playerOne.player_score++;
-		apple.trans.SetPosition((rand() % 125) * 10.0f, (rand() % 70) * 10.0f);
+		playerScore++;
+		apple.GetNewRandomPos(applePosX, applePosY);
+
 	}
+
+	Render(renderer);
 }
 
-void Game::Render(RenderManager& renderManager)
+void Game::Render(Renderer renderer)
 {
-	playerOne.Render(renderManager);
-	apple.Render(renderManager);
+	SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0, 0);
+	SDL_RenderClear(renderer.get());
+
+	
+	SDL_RenderPresent(renderer.get());
+	
+	SDL_Delay(1000 / 20); //<- "Framerate".
 }
 
-void Game::OnKeyDown()
+void Game::OnKeyDown(SDL_Keycode key)
 {
-	playerOne.OnKeyDown();
+	player.PlayerMove(key);
 }
 

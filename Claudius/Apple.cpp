@@ -4,11 +4,6 @@
 #include "Apple.h"
 #include "RenderManager.h"
 
-//Constructor.
-Apple::Apple()
-{
-
-}
 
 void Apple::Initialize(unsigned int width, unsigned int height)
 {
